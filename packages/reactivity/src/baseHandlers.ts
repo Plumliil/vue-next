@@ -188,6 +188,7 @@ function createSetter(shallow = false) {
   }
 }
 
+// 删除属性
 function deleteProperty(target: object, key: string | symbol): boolean {
   const hadKey = hasOwn(target, key)
   const oldValue = (target as any)[key]
@@ -197,7 +198,7 @@ function deleteProperty(target: object, key: string | symbol): boolean {
   }
   return result
 }
-
+// 
 function has(target: object, key: string | symbol): boolean {
   const result = Reflect.has(target, key)
   if (!isSymbol(key) || !builtInSymbols.has(key)) {
@@ -241,6 +242,8 @@ export const readonlyHandlers: ProxyHandler<object> = {
   }
 }
 
+
+// 浅复制?
 export const shallowReactiveHandlers = /*#__PURE__*/ extend(
   {},
   mutableHandlers,
